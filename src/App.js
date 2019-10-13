@@ -15,16 +15,19 @@ class App extends React.Component {
       {
         id: 0,
         title: 'Вынести мусор',
+        dueDate: '2017-06-01',
         completed: false,
       },
       {
         id: 1,
         title: 'Встреча с друзьями',
+        dueDate: '2018-02-13',
         completed: true,
       },
       {
         id: 2,
         title: 'Совещание на работе',
+        dueDate: '2019-10-25',
         completed: false,
       },
     ]
@@ -45,8 +48,8 @@ class App extends React.Component {
     this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
   }
 
-  addTodo(text) {
-    this.setState({ todos: [...this.state.todos, { id: this.state.todos.length, title: text, completed: false }] })
+  addTodo(text, date) {
+    this.setState({ todos: [...this.state.todos, { id: this.state.todos.length, title: text, dueDate: date, completed: false }] })
   }
 
   render() {
@@ -59,11 +62,7 @@ class App extends React.Component {
             </div>
           </div>
 
-          <div className="row mb-2">
-            <div className="col">
-              <AddTodo addTodoHandler= {this.addTodo}/>
-            </div>
-          </div>
+          <AddTodo addTodoHandler={this.addTodo} />
 
           <div className="row">
             <div className="col">

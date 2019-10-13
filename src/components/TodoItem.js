@@ -18,14 +18,15 @@ class TodoItem extends React.Component {
     }
 
     render() {
-        const { id, title } = this.props.todo;
+        const { id, title, dueDate } = this.props.todo;
         return (
             <div style={this.getStyle()}>
                 <p align='left'>
-                    <input type="checkbox"
+                    <input type='checkbox'
                         onChange={this.props.markComplete.bind(this, id)}
                     />
-                    {' ' + title}
+                    {' ' + title + ' '}
+                    <span className='text-muted'>{dueDate}</span>
                     <button onClick={this.props.delTodo.bind(this, id)}
                         className="btn btn-default btn-xs float-right">
                         <FontAwesomeIcon icon={faTimes} />

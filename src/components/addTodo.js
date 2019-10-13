@@ -1,19 +1,25 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class AddTodo extends Component {
+    constructor(props) {
+        super(props);
+        this.input = React.createRef();
+    }
+
     render() {
         return (
-            <form style={{display: 'flex'}}>
+            <form style={{ display: 'flex' }}>
                 <input type='text'
-                       name='title'
-                       placeholder='Add todo'
-                       style={{flex: '10'}}
+                    name='title'
+                    placeholder='Add todo'
+                    ref={this.input}
+                    style={{ flex: '10' }}
                 />
-                <input type='submit'
-                       value='Submit'
-                       className='btm'
-                       style={{flex: '1'}}
-                />
+                <button type="button"
+                    value='Submit'
+                    className='btn btn-dark ml-1'
+                    onClick={() => this.props.addTodoHandler(this.input.current.value)}
+                >Submit</button>
             </form>
         );
     }

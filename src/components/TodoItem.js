@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
-class TodoItem extends React.Component{
+class TodoItem extends React.Component {
     getStyle = () => {
-        return{
+        return {
             background: '#f4f4f4',
             padding: '5px',
             borderBottom: '1px #ccc dotted',
@@ -16,30 +18,24 @@ class TodoItem extends React.Component{
     }
 
     render() {
-        const {id, title} = this.props.todo;
+        const { id, title } = this.props.todo;
         return (
             <div style={this.getStyle()}>
                 <p align='left'>
                     <input type="checkbox"
-                           onChange={this.props.markComplete.bind(this, id)}/> {' '}
-                    { title }
+                        onChange={this.props.markComplete.bind(this, id)}
+                    />
+                    {' ' + title}
                     <button onClick={this.props.delTodo.bind(this, id)}
-                            style={btnStyle}>X</button>
+                        className="btn btn-default btn-xs float-right">
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
                 </p>
             </div>
         );
     }
 }
 
-const btnStyle = {
-    background: '#ff0000',
-    color: '#fff',
-    border: 'none',
-    padding: '5px 9px',
-    borderRadius:'50%',
-    cursor: 'pointer',
-    float:'right'
-};
 
 TodoItem.propTypes = {
     todo: PropTypes.object.isRequired
